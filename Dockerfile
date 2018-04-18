@@ -1,8 +1,7 @@
 FROM maven:3.5.0-jdk-8-alpine as BUILD
-COPY settings.xml /usr/share/maven/ref/
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN mvn clean package
+RUN mvn clean package --settings settings.xml
 
 FROM openjdk:8-jdk-alpine as APP
 VOLUME /tmp
