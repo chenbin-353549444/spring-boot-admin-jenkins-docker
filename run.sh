@@ -8,8 +8,6 @@
 # 删除原来镜像
 (docker rmi admin && echo "rmi success") || echo "rmi error";
 
-ls;
-
 # 生成新的镜像
 docker build -t admin .;
 

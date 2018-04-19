@@ -29,6 +29,7 @@ pipeline {
             }
         }
         stage('Deliver') {
+            agent any
             steps {
                 sh 'sh run.sh'
             }
