@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 停止admin容器
 (docker stop admin && echo "stop success") || echo "stop error";
 
@@ -10,7 +9,7 @@
 (docker rmi admin && echo "rmi success") || echo "rmi error";
 
 # 生成新的镜像
-(docker build -t admin . && echo "rmi success") || echo "rmi error";
+docker build -t admin .;
 
 # 运行admin容器
 docker run --name admin \

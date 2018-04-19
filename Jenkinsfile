@@ -1,20 +1,30 @@
-#!groovy
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'maven:3.5.0-jdk-8-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
     stages {
-        
-        stage('hello') {
+        stage('Build') {
             steps {
-                sh 'sh run.sh'
+                sh 'mvn -B -DskipTests clean package --settings settings.xml'
             }
         }
-        
-    }
-    
-    post {
-        always {
-            echo "${env.BUILD_STATUS}"
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh 'run.sh'
+            }
         }
     }
 }
