@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn test'
+                sh 'mvn test --settings settings.xml'
             }
             post {
                 always {
