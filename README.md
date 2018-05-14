@@ -133,5 +133,5 @@ ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urando
 ```
 
 ## 参考链接
-Jenkins持续集成maven项目：https://jenkins.io/doc/tutorials/build-a-java-app-with-maven
+Jenkins持续集成maven项目：https://jenkins.io/doc/tutorials/build-a-java-app-with-maven  
 CentOS安装Docker：https://docs.docker.com/install/linux/docker-ce/centos
