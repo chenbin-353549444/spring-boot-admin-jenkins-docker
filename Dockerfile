@@ -1,9 +1,9 @@
 FROM maven:3.5.0-jdk-8-alpine as BUILD
-WORKDIR /usr/src/app
 COPY pom.xml /usr/src/app
 RUN mvn -B -e -C -T 1C org.apache.maven.plugins:maven-dependency-plugin:3.0.2:go-offline
+WORKDIR /usr/src/app
 COPY . /usr/src/app
-RUN mvn -B -e -o -T 1C verify
+RUN mvn clean package --settings settings.xml
 
 FROM openjdk:8-jdk-alpine as APP
 VOLUME /tmp
